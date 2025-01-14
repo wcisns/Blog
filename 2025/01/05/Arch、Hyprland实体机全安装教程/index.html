@@ -1,0 +1,951 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="wcis">
+  <meta name="keywords" content="个人博客,blog">
+  
+    <meta name="description" content="安装 内容参考Arch WiKiArch提供了自动化安装脚本可以输入archinstall进行配置 下载Arch镜像 1[Arch 2024.12.01镜像](https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinux&#x2F;iso&#x2F;2024.12.01&#x2F;) 验证ISO文件密钥SHA256 1certutil -hashfile 镜像文件.iso SHA256 # 和官">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arch、Hyprland实体机全安装教程">
+<meta property="og:url" content="https://wcisns.top/2025/01/05/Arch%E3%80%81Hyprland%E5%AE%9E%E4%BD%93%E6%9C%BA%E5%85%A8%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="wcisnsの小破站">
+<meta property="og:description" content="安装 内容参考Arch WiKiArch提供了自动化安装脚本可以输入archinstall进行配置 下载Arch镜像 1[Arch 2024.12.01镜像](https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinux&#x2F;iso&#x2F;2024.12.01&#x2F;) 验证ISO文件密钥SHA256 1certutil -hashfile 镜像文件.iso SHA256 # 和官">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wcisns.top/img/note/P1.jpg">
+<meta property="og:image" content="https://wcisns.top/img/note/p2.jpg">
+<meta property="og:image" content="https://wcisns.top/img/note/p3.jpg">
+<meta property="article:published_time" content="2025-01-05T15:42:21.000Z">
+<meta property="article:modified_time" content="2025-01-13T09:07:25.586Z">
+<meta property="article:author" content="wcis">
+<meta property="article:tag" content="Arch">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Hyprland">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wcisns.top/img/note/P1.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Arch、Hyprland实体机全安装教程 - wcisnsの小破站</title>
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/gradient.css">
+<link rel="stylesheet" href="/css/media.css">
+<link rel="stylesheet" href="/css/backgroundize.css">
+<link rel="stylesheet" href="/css/selection.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/glassBg.css">
+<link rel="stylesheet" href="/css/part-text.css">
+<link rel="stylesheet" href="/css/toc.css">
+<link rel="stylesheet" href="/css/links.css">
+<link rel="stylesheet" href="/css/table.css">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/loader.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wcisns.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-12T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <div id="loader-container"> 
+    <div id="loader" class="loader"></div>
+    <div class="loader-inner">
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+</div>
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WCISNSの小破站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Arch、Hyprland实体机全安装教程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-05 23:42" pubdate>
+          2025年1月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Arch、Hyprland实体机全安装教程</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年1月13日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="%E5%AE%89%E8%A3%85" tabindex="-1" id="安装">安装</h2>
+<p>内容参考<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#">Arch WiKi</a>Arch提供了自动化安装脚本可以输入<code>archinstall</code>进行配置</p>
+<h3 id="%E4%B8%8B%E8%BD%BDarch%E9%95%9C%E5%83%8F" tabindex="-1" id="下载Arch镜像">下载Arch镜像</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[Arch 2024.12.01镜像](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/2024.12.01/)<br></code></pre></td></tr></table></figure>
+<h3 id="%E9%AA%8C%E8%AF%81iso%E6%96%87%E4%BB%B6%E5%AF%86%E9%92%A5sha256" tabindex="-1" id="验证ISO文件密钥SHA256">验证ISO文件密钥SHA256</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">certutil -hashfile 镜像文件.iso SHA256 <span class="hljs-comment"># 和官网密钥对比</span><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/download/">Arch 官网下载界面</a>密钥在这查看<img src="/img/note/P1.jpg" srcset="/img/loading.gif" lazyload alt="启动盘"></p>
+<h3 id="%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8%E7%9B%98" tabindex="-1" id="制作启动盘">制作启动盘</h3>
+<p>进入<a target="_blank" rel="noopener" href="https://rufus.ie/en/">Rufus 官网</a>下载rufus启动盘制作软件分区类型GPT，目标系统类型UEFI</p>
+<p>如果是固态U盘就打开显示高级设备选项</p>
+<p>勾选上显示USB外置硬盘</p>
+<h3 id="%E9%AA%8C%E8%AF%81%E5%BC%95%E5%AF%BC%E6%A8%A1%E5%BC%8F" tabindex="-1" id="验证引导模式">验证引导模式</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /sys/firmware/efi/fw_platform_size <span class="hljs-comment"># 验证UEFI位数是64位或32位</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E8%BF%9E%E6%8E%A5wifi" tabindex="-1" id="连接WIFI">连接WIFI</h3>
+<p><code>rfkill unblock wifi</code>解除网络接口软件屏蔽</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">iwctl <span class="hljs-comment"># 进入[iwd]#界面 </span><br>device list <span class="hljs-comment"># 列出所有可用的适配器设备</span><br>device name set-property Powered on <span class="hljs-comment"># 把网络适配器打开</span><br>station name scan <span class="hljs-comment"># 扫描网络</span><br>station name get-networks <span class="hljs-comment"># 列出所有网络 </span><br>station name connect SSID <span class="hljs-comment"># 连接网络</span><br><span class="hljs-built_in">exit</span> <span class="hljs-comment"># 退出[iwd]#界面</span><br></code></pre></td></tr></table></figure>
+<p>Name是适配器名称，SSID是无线网络名称</p>
+<p>连接上了可使用 <code>ping archlinux.org</code>测试网络是否通畅</p>
+<h3 id="%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4" tabindex="-1" id="更新系统时间">更新系统时间</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">timedatectl set-ntp <span class="hljs-literal">true</span> <span class="hljs-comment"># 启用NTP同步</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E5%88%9B%E5%BB%BA%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA" tabindex="-1" id="创建硬盘分区">创建硬盘分区</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">fdisk -l <span class="hljs-comment"># 查看硬盘信息</span><br>fdisk 硬盘名称 <span class="hljs-comment"># 分区工具修改硬盘分区表，把路径写全</span><br></code></pre></td></tr></table></figure>
+<h4 id="fdisk%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA" tabindex="-1" id="fdisk创建分区">fdisk创建分区</h4>
+<p>我的分区方案是一个EFI分区、一个SWAP分区、一个/(根)分区</p>
+<p>输入 <code>g</code> 创建一个GPT分区表输入 <code>n</code> 创建分区</p>
+<p>接下来依次是分区编号、起始扇区、结束扇区分区编号如果是默认直接回车即可、起始扇区也是结束扇区根据想要分区多大输入，1G就输入 <code>+1G</code></p>
+<p>512MB就输入 <code>+512M</code>输入 <code>p</code>显示分区表输入 <code>w</code>保存分区表写入磁盘输入 <code>q</code>放弃更改后的分区表</p>
+<h3 id="%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%88%86%E5%8C%BA" tabindex="-1" id="格式化分区">格式化分区</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkfs.ext4 根分区 <span class="hljs-comment"># 格式化/分区</span><br>mkswap swap分区 <span class="hljs-comment"># 格式化swap分区</span><br>mkfs.fat -F 32 EFI分区 <span class="hljs-comment"># 格式化EFI分区</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA" tabindex="-1" id="挂载分区">挂载分区</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mount 根分区 /mnt <span class="hljs-comment"># 把根分区挂载到/mnt目录</span><br>mount --<span class="hljs-built_in">mkdir</span> EFI分区 /mnt/boot <span class="hljs-comment"># 把EFI分区挂载到/mnt/boot目录</span><br>swapon swap分区 <span class="hljs-comment"># 启用Swap分区</span><br></code></pre></td></tr></table></figure>
+<p>遵循先挂载到根分区，再挂载EFI分区，最后挂载其他分区</p>
+<h3 id="%E9%85%8D%E7%BD%AE%E8%BD%AF%E4%BB%B6%E6%BA%90" tabindex="-1" id="配置软件源">配置软件源</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -L <span class="hljs-string">&quot;https://archlinux.org/mirrorlist/?country=CN&amp;protocol=https&quot;</span> \<br>-o /etc/pacman.d/mirrorlist  <span class="hljs-comment"># 获取中国大陆的https镜像站</span><br></code></pre></td></tr></table></figure>
+<p>进入 <code>/etc/pacma.d/mirrorlist</code>文件找到想要的软件源把前面的#去掉保存即可</p>
+<h3 id="%E5%AE%89%E8%A3%85%E5%BF%85%E9%9C%80%E8%BD%AF%E4%BB%B6%E5%8C%85" tabindex="-1" id="安装必需软件包">安装必需软件包</h3>
+<p><code>pacstrap -K /mnt base linux linux-firmware</code>安装linux内核文件显示分区表如果计算机是intel的CPU追加<code>intel-ucode</code>，AMD CPU追加<code>amd-ucode</code>文件管理系统的用户工具：</p>
+<p>ext4 <code>e2fsprogs</code>exfat <code>exfatprogs</code>Btrfs <code>btrfs-progs</code>XFS <code>xfsprogs</code></p>
+<p>访问RAID分区的工具 <code>mdadm</code>访问LVM分区的工具 <code>lvm2</code>内建音频的 <code>sof-firmware</code>,用于Marvell无线的 <code>linux-firmware-marvell</code>Broadcom wireless的固件包 <code>broadcom-wl</code>联网所需的程序 <code>modemmanager</code>文件编辑器如 <code>nano</code>,<code>vim</code>访问man和info页面中文档的工具:<code>man-db</code>,<code>man-pages</code>,<code>texinfo</code>ssh工具 <code>openssh</code>、网络管理器 <code>networkmanager</code>sudo <code>sudo</code>、zsh <code>zsh</code>、git <code>git</code>、base-level <code>base-level</code>、nodejs <code>nodejs</code>、<code>npm</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacstrap -K /mnt base linux linux-firmware interl-ucode amd-ucode \<br>e2fsprogs exfatprogs btrfs-progs xfsprogs mdadm lvm2 sof-firmware \<br>linux-firmware-marvell broadcom-wl modemmanager nano vim man-db \<br>man-pages texinfo openssh networkmanager <span class="hljs-built_in">sudo</span> zsh git base-level \<br>nodejs npm<br></code></pre></td></tr></table></figure>
+<h3 id="%E7%94%9F%E6%88%90fstab%E6%96%87%E4%BB%B6" tabindex="-1" id="生成fstab文件">生成fstab文件</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab <span class="hljs-comment"># 分区挂载或启用后自动检测并生成系统文件</span><br></code></pre></td></tr></table></figure>
+<h3 id="chroot%E5%88%B0%E6%96%B0%E5%AE%89%E8%A3%85%E7%9A%84%E7%B3%BB%E7%BB%9F" tabindex="-1" id="chroot到新安装的系统">chroot到新安装的系统</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">arch-chroot /mnt <span class="hljs-comment"># chroot到新安装系统</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA" tabindex="-1" id="设置时区">设置时区</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="hljs-comment"># 设置时区为上海</span><br>hwclock --sysohc <span class="hljs-comment"># 生成/etc/adjtime文件</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E5%8C%BA%E5%9F%9F%E5%8C%96%E6%9C%AC%E5%9C%B0%E8%AE%BE%E7%BD%AE" tabindex="-1" id="区域化本地设置">区域化本地设置</h3>
+<p>打开<code>/etc/locale.gen</code>文件取消<code>en_US.UTF-8 UFT-8</code>和<code>zh_CN.UTF-8 UTF-8</code>的注释，保存退出执行<code>locale-gen</code>命令打开<code>/etc/locale.conf</code>文件添加<code>LANG=en_US.UTF-8</code>和<code>LC_TIME=zh_CN.UTF-8</code>两行</p>
+<h3 id="%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE" tabindex="-1" id="网络配置">网络配置</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/hostname <span class="hljs-comment"># 在文件中输入主机名</span><br>ip <span class="hljs-built_in">link</span> show <span class="hljs-comment"># 查看网络接口</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> interface up <span class="hljs-comment"># 开启网络接口，interface替换为网络接口</span><br>systemctl <span class="hljs-built_in">enable</span> NetworkManager.service <span class="hljs-comment"># 开机自启网络服务</span><br>systemctl <span class="hljs-built_in">enable</span> sshd.service <span class="hljs-comment"># 开机自启sshd服务</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E8%AE%BE%E7%BD%AEroot%E5%AF%86%E7%A0%81" tabindex="-1" id="设置root密码">设置root密码</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">passwd root <span class="hljs-comment"># 设置root密码</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E5%AE%89%E8%A3%85grub%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F" tabindex="-1" id="安装Grub引导程序">安装Grub引导程序</h3>
+<p>安装软件包<code>efibootmgr</code>、<code>grub</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 把grub安装到磁盘</span><br>grub-install --target=x86_64-efi \<br>--efi-directory=/boot --bootloader-id=GRUB<br><br><span class="hljs-comment"># 生成cfg文件</span><br>grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+<p>进入cfg文件 找到 <code>set timeout=10</code>把10改为0保存退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">exit</span> <span class="hljs-comment"># 退出chroot环境</span><br>umount -R /mnt <span class="hljs-comment"># 手动卸载全部被挂载分区</span><br>reboot <span class="hljs-comment"># 重启系统</span><br></code></pre></td></tr></table></figure>
+<p>撤出启动盘进入系统后使用 <code>nmtui</code>工具连接网络</p>
+<h3 id="%E5%88%9B%E5%BB%BA%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7" tabindex="-1" id="创建普通用户">创建普通用户</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/shells` 查看zsh路径<br>`useradd -m -s <span class="hljs-string">&quot;/bin/zsh&quot;</span> <span class="hljs-string">&quot;username&quot;</span>` 创建普通用户，并为其指定默认shell为zsh<br>`passwd <span class="hljs-string">&quot;用户名&quot;</span><br></code></pre></td></tr></table></figure>
+<p>使用root用户在 <code>/etc/sudoers</code>文件里找到 <code>root ALL=(ALL:ALL) ALL</code>复制在下一行粘贴，把root换成我们要添加的普通用户名，保存退出（这样就能普通用户就能使用sudo命令执行root权限了）建议用户名不要用中文、大写，否则Hyprland登陆会登不进去</p>
+<p><img src="/img/note/p2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="%E9%85%8D%E7%BD%AE" tabindex="-1" id="配置">配置</h2>
+<h3 id="%E9%85%8D%E7%BD%AEarchlinuxcn" tabindex="-1" id="配置ArchLinuxCN">配置ArchLinuxCN</h3>
+<p>使用<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxcn/">清华的软件源</a>在<code>/etc/pacman.conf</code> 末尾添加以下语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[archlinuxcn]<br>Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="hljs-variable">$arch</span><br></code></pre></td></tr></table></figure>
+<p>添加本地信任GPG key<code>sudo pacman-key --lsign-key &quot;farseerc@archlinux.org&quot;</code>安装archlinuxcn密钥<code>sudo pacman -Sy archlinuxcn-keyring</code>配置git的全局设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;your_github_username&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;your_github_email@email.com&quot;</span><br>git config --global init.defaultBranch main<br></code></pre></td></tr></table></figure>
+<h3 id="npm%E6%8D%A2%E6%BA%90" tabindex="-1" id="npm换源">npm换源</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v &amp;&amp; npm -v <span class="hljs-comment"># 查看npm、node版本</span><br><br><span class="hljs-comment"># 更换华为源</span><br><br>npm config <span class="hljs-built_in">set</span> registry <br>https://mirrors.huaweicloud.com/repository/npm/<br><br>npm cache clean -f <span class="hljs-comment"># 清理缓存</span><br><br>npm config list <span class="hljs-comment"># 查看源</span><br><br>npm update <span class="hljs-comment"># 更新</span><br><br><span class="hljs-built_in">sudo</span> npm install -g npm@latest <span class="hljs-comment"># 更新npm</span><br></code></pre></td></tr></table></figure>
+<p>使用npm下载工具需要root权限</p>
+<h3 id="github-ssh%E4%B8%8B%E8%BD%BD" tabindex="-1" id="Github-SSH下载">Github SSH下载</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_name@email.com&quot;</span><br><span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519.pub<br></code></pre></td></tr></table></figure>
+<p>登录<strong>github</strong>，点击<strong>头像</strong>，点击<strong>设置</strong>，找到 <strong>SSH and GPG keys</strong> 选项，点击 <strong>SSH keys</strong> 右边的 <strong>New SSH key</strong> 按钮，标题给个恰当的密钥名字，把 cat ~/.ssh/id_ed25519.pub的输出全部复制进 Key 里面，单击 <strong>Add SSH key</strong>，接着输入你的 github 登录密码<code>ssh -T git@github.com</code>弹出以下内容，代表成功<code>Hi your_name! You’ve successfully authenticated, but GitHub does not provide shell access.</code></p>
+<h3 id="paru%E5%AE%89%E8%A3%85" tabindex="-1" id="paru安装">paru安装</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/paru.git<br><span class="hljs-built_in">cd</span> paru<br>makepkg -si<br></code></pre></td></tr></table></figure>
+<p><code>sudo vim /etc/pacman.conf</code>把 Color的注释去掉<code>sudo nano /etc/paru.conf</code> 把BottomUp注释去掉<code>paru -Syu</code> 更新</p>
+<h3 id="hyprland%E5%AE%89%E8%A3%85" tabindex="-1" id="Hyprland安装">Hyprland安装</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/JaKooLit/Arch-Hyprland.git<br><span class="hljs-built_in">cd</span> Arch-Hyprland<br><span class="hljs-built_in">chmod</span> +x install.sh<br>./install.sh<br></code></pre></td></tr></table></figure>
+<p>安装过程需要全程联网并且建议挑网络好的时候安装如果安装过程中经常有软件下载失败可以先把最后的标记失败的软件安装上，再配置好npm和github ssh下载方式，再进行下载</p>
+<p>安装一些娱乐软件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">paru -S google-chrome <span class="hljs-comment"># 安装chrome浏览器</span><br>paru -S baidunetdisk-bin <span class="hljs-comment"># 安装百度网盘</span><br>paru -S nerd-fonts <span class="hljs-comment"># 安装nerd-fonts字体</span><br>paru -S linuxqq wechat <span class="hljs-comment"># qq和微信</span><br>paru bilibili <span class="hljs-comment"># 选择1</span><br></code></pre></td></tr></table></figure>
+<p>安装中文字体</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy adobe-source-han-sans-cn-fonts \<br>adobe-source-han-serif-cn-fonts noto-fonts-cjk \<br>wqy-microhei wqy-microhei wqy-microhei-lite \<br>wqy-bitmapfont ttf-arphic-ukai ttf-arphic-uming<br></code></pre></td></tr></table></figure>
+<h3 id="oh-my-zsh" tabindex="-1" id="oh-my-zsh">oh-my-zsh</h3>
+<p>如果安装完毕，终端没有ohmyzsh美化，可以自己尝试安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh<br><br><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br><br><span class="hljs-comment"># 主题 powerlevel10k</span><br>git <span class="hljs-built_in">clone</span> --depth=1 https://gitee.com/romkatv/powerlevel10k.git \<br><span class="hljs-variable">$&#123;ZSH_CUSTOM:-<span class="hljs-variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k<br><span class="hljs-comment"># 高亮</span><br>git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git \<br><span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting<br><span class="hljs-comment"># 自动补全</span><br>git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions \<br><span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions<br><br><span class="hljs-comment"># 进入.zshrc文件</span><br><span class="hljs-comment"># 找到 ZSH_THEME，把值改为&quot;powerlevel10k/powerlevel10k&quot;</span><br><span class="hljs-comment"># 找到 plugins=(git)，在 git 后面添加 zsh-autosuggestions zsh-syntax-highlighting</span><br></code></pre></td></tr></table></figure>
+<h3 id="lazyvim" tabindex="-1" id="LazyVim">LazyVim</h3>
+<p>保证装有neovim和git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy neovim<br>git <span class="hljs-built_in">clone</span> https://github.com/LazyVim/starter ~/.config/nvim<br><span class="hljs-built_in">rm</span> -rf ~/.config/nvim/.git<br>nvim <span class="hljs-comment"># 启动nvim，安装插件</span><br><span class="hljs-comment"># 在~/.zshrc文件中添加</span><br><span class="hljs-built_in">alias</span> vim=<span class="hljs-string">&#x27;nvim&#x27;</span> <span class="hljs-comment"># 需要先将vim删掉，如果出现有vim但是pacman找不到，可以先安装，再删除</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E7%94%B5%E6%B1%A0%E7%AE%A1%E7%90%86" tabindex="-1" id="电池管理">电池管理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S tlp<br>paru -S tlpui-git <span class="hljs-comment"># 如果出现git仓库克隆失败可以先执行下行注释git命令克隆下来,再安装</span><br><span class="hljs-comment"># git clone https://github.com/linrunner/TLP.git</span><br>paru -S tlp-rdw<br>paru -S tp_smapi-lts tp_smapi<br><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> tlp.service<br><span class="hljs-built_in">sudo</span> systemctl start tlp.service<br><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> NetworkManager-dispatcher.service<br><span class="hljs-built_in">sudo</span> systemctl start NetworkManager-dispatcher.service<br><span class="hljs-built_in">sudo</span> systemctl mask systemd-rfkill.socket systemd-rfkill.service<br></code></pre></td></tr></table></figure>
+<h3 id="%E9%A3%8E%E6%89%87%E6%8E%A7%E5%88%B6" tabindex="-1" id="风扇控制">风扇控制</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">paru -S nbfc-linux-git<br></code></pre></td></tr></table></figure>
+<h3 id="ufw%E9%98%B2%E7%81%AB%E5%A2%99" tabindex="-1" id="ufw防火墙">ufw防火墙</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S ufw<br>systemctl <span class="hljs-built_in">enable</span> ufw<br>systemctl start ufw<br><br><span class="hljs-comment"># 操作</span><br><br><span class="hljs-built_in">sudo</span> ufw allow 3389/tcp<br><span class="hljs-built_in">sudo</span> ufw allow 3389/udp<br><span class="hljs-built_in">sudo</span> ufw reset<br><span class="hljs-built_in">sudo</span> ufw status<br><span class="hljs-built_in">sudo</span> ufw default deny<br></code></pre></td></tr></table></figure>
+<h3 id="%E5%AE%89%E8%A3%85vscode" tabindex="-1" id="安装VSCode">安装VSCode</h3>
+<p>在<a target="_blank" rel="noopener" href="https://code.visualstudio.com/Download">VSCode下载链接</a>下载.tar.gz包</p>
+<p>把安装包<code>tar -zxvf 安装包.tar.gz</code>解压，放在/opt/目录下</p>
+<p>使用ln命令创建软件链接<code>ln -s /opt/code-stable-x64-1731511985 /opt/vscode</code></p>
+<p>创建<code>vscode.desktop</code>文件(快捷方式)<a href="about:blank">链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">[Desktop Entry]<br>Type=Application<br>Name=Visual Studio Code<br>Exec=/opt/vscode/code<br>Icon=/opt/vscode/resources/app/resources/linux/code.png<br>Comment=Visual Studio Code<br>Terminal=<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>把文件放在 <code>/usr/share/applications/</code>目录下，结束<br>
+<img src="/img/note/p3.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Arch/" class="print-no-link">#Arch</a>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/Hyprland/" class="print-no-link">#Hyprland</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Arch、Hyprland实体机全安装教程</div>
+      <div>https://wcisns.top/2025/01/05/Arch、Hyprland实体机全安装教程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>wcis</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/05/Docker%E5%AE%89%E8%A3%85Windows/" title="Docker安装Windows">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker安装Windows</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"wcisns/Blog","repo-id":"R_kgDONnzoBA","category":"Announcements","category-id":"DIC_kwDONnzoBM4Cl8z7","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"bottom","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div>
+  <span id="timeDate">正在载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("1/12/2025 01:15:00");
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀已持续航行&nbsp"+dnum+"&nbsp天";  
+      document.getElementById("times").innerHTML = hnum + "&nbsp时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+  }
+  setInterval("createtime()",250);
+  </script>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="footer-content" style="font-size: 0.85rem;">
+       <div class="statistics"> <a target="_blank" rel="noopener" href="https://developer.hitokoto.cn/" id="hitokoto_text"><span style="color: #DDD;"  id="hitokoto"></span></a> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> </div>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://fastly.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://fastly.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://fastly.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://fastly.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+<script src="/js/backgroundize.js"></script>
+<script src="/js/title.js"></script>
+<script src="/js/loader-search.js"></script>
+<script src="/js/outdate-notice.js"></script>
+<script src="/js/loader.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  <canvas
+    class="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script type="text/javascript" src="/custom/fireworks/anime.min.js"></script> 
+<script type="text/javascript" src="/custom/fireworks/fireworks.js"></script>
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --></body>
+</html>

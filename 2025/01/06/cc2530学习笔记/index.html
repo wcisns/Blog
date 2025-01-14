@@ -1,0 +1,1023 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="wcis">
+  <meta name="keywords" content="个人博客,blog">
+  
+    <meta name="description" content="需要使用的软件有:   IAR Embedded Workbench IDE   SmartRF Flash Programmer   硬件:   一个CC Debugger仿真器、USB充电器   蓝色zigbee智能节点盒及其充电器   一台装有职业院校技能大赛物联网专用win10系统的PC    IAR创建工程文件   创建一个空目录   打开IAR软件，创建一个空workspace(工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CC2530学习笔记">
+<meta property="og:url" content="https://wcisns.top/2025/01/06/cc2530%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="wcisnsの小破站">
+<meta property="og:description" content="需要使用的软件有:   IAR Embedded Workbench IDE   SmartRF Flash Programmer   硬件:   一个CC Debugger仿真器、USB充电器   蓝色zigbee智能节点盒及其充电器   一台装有职业院校技能大赛物联网专用win10系统的PC    IAR创建工程文件   创建一个空目录   打开IAR软件，创建一个空workspace(工作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wcisns.top/img/P2INP.jpg">
+<meta property="article:published_time" content="2025-01-06T15:24:31.000Z">
+<meta property="article:modified_time" content="2025-01-06T15:24:31.000Z">
+<meta property="article:author" content="wcis">
+<meta property="article:tag" content="单片机">
+<meta property="article:tag" content="CC2530">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wcisns.top/img/P2INP.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>CC2530学习笔记 - wcisnsの小破站</title>
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/gradient.css">
+<link rel="stylesheet" href="/css/media.css">
+<link rel="stylesheet" href="/css/backgroundize.css">
+<link rel="stylesheet" href="/css/selection.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/glassBg.css">
+<link rel="stylesheet" href="/css/part-text.css">
+<link rel="stylesheet" href="/css/toc.css">
+<link rel="stylesheet" href="/css/links.css">
+<link rel="stylesheet" href="/css/table.css">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/loader.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wcisns.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-12T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <div id="loader-container"> 
+    <div id="loader" class="loader"></div>
+    <div class="loader-inner">
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+</div>
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WCISNSの小破站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CC2530学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-06 23:24" pubdate>
+          2025年1月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">CC2530学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>需要使用的软件有:</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>IAR Embedded Workbench IDE</p>
+</li>
+<li class="lvl-2">
+<p>SmartRF Flash Programmer</p>
+</li>
+</ul>
+<p>硬件:</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>一个CC Debugger仿真器、USB充电器</p>
+</li>
+<li class="lvl-2">
+<p>蓝色zigbee智能节点盒及其充电器</p>
+</li>
+<li class="lvl-2">
+<p>一台装有职业院校技能大赛物联网专用win10系统的PC</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="iar%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6" tabindex="-1" id="IAR创建工程文件">IAR创建工程文件</h2>
+<ol>
+<li class="lvl-3">
+<p>创建一个空目录</p>
+</li>
+<li class="lvl-3">
+<p>打开IAR软件，创建一个空workspace(工作区) <code>File -&gt; New -&gt; Workspace</code></p>
+</li>
+<li class="lvl-3">
+<p>创建工程<code>Project -&gt; Create New Project... -&gt; Tool chain 选8051, Empty project -&gt; OK -&gt; 弹出的窗口找到新建的空目录，把保存文件名字改下 -&gt; 保存</code></p>
+</li>
+<li class="lvl-3">
+<p>基础设置<code>在软件的左边Workspace区的工程文件上右击 -&gt; 选Options... -&gt; 在Device框 点击右边的 ...  -&gt; 弹出窗口下拉找到Texas Instruments打开 -&gt; 选CC2530F2256.i51文件打开 -&gt; 在Debugger栏 -&gt; Driver下拉菜单找到Texas Instruments点击 -&gt; 在Linker栏 -&gt; Output -&gt; Output file -&gt; 勾选Override default -&gt; 文件名可以不改，把后缀名改成.hex就行 -&gt; Format -&gt; 勾选Other单选框，Output format默认inter-extended，如果不是，请改正 -&gt; OK</code></p>
+</li>
+<li class="lvl-3">
+<p>新建文件，然后把文件保存到空目录下<code>File -&gt; New -&gt; File</code></p>
+</li>
+<li class="lvl-3">
+<p><code>右击左边的工程文件 -&gt; Add -&gt; Add &quot;main.c&quot;</code>: main.c是新建的文件</p>
+</li>
+<li class="lvl-3">
+<p>创建eww工作区文件<code>Project -&gt; Rebuild All -&gt; 在当前目录下保存</code></p>
+</li>
+</ol>
+<h2 id="%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%AD%E7%9A%84%E6%9F%90%E4%BA%9B%E4%BD%8D%E6%B8%850%E6%88%96%E7%BD%AE1" tabindex="-1" id="将寄存器中的某些位清0或置1">将寄存器中的某些位清0或置1</h2>
+<blockquote>
+<p>基本思路: 将要操作的位置为1，如果是与运算，则要使用到取反(<code>~</code>)操作符</p>
+<p>需要用到16进制的8421法则</p>
+</blockquote>
+<h3 id="%E5%B0%86%E6%9F%90%E4%BA%9B%E4%BD%8D%E7%BD%AE1%E5%90%8C%E6%97%B6%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%85%B6%E4%BB%96%E4%BD%8D" tabindex="-1" id="将某些位置1同时不影响其他位">将某些位置1同时不影响其他位</h3>
+<dl>
+<dt><strong>或</strong>操作<code>|=</code>：</dt>
+<dd>
+<p>任何值与0相或，保持原值；</p>
+</dd>
+<dd>
+<p>任何值与1相或，结果为1；</p>
+</dd>
+</dl>
+<h3 id="%E5%B0%86%E6%9F%90%E4%BA%9B%E4%BD%8D%E7%BD%AE0%E5%90%8C%E6%97%B6%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%85%B6%E4%BB%96%E4%BD%8D" tabindex="-1" id="将某些位置0同时不影响其他位">将某些位置0同时不影响其他位</h3>
+<dl>
+<dt><strong>与</strong>操作<code>&amp;=</code>:</dt>
+<dd>
+<p>任何值与1相与，保持原值；</p>
+</dd>
+<dd>
+<p>任何值与0相与，结果为0;</p>
+</dd>
+</dl>
+<h2 id="cc2530%E7%AB%AF%E5%8F%A3%E5%BC%95%E8%84%9A%E6%A6%82%E8%BF%B0" tabindex="-1" id="CC2530端口引脚概述">CC2530端口引脚概述</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>采用QFN40封装，有40个引脚。</p>
+</li>
+<li class="lvl-2">
+<p>有21个数字I/O端口，其中P0和P1是8个引脚，P2仅有5个可以使用。</p>
+</li>
+<li class="lvl-2">
+<p>实际开发可用I/O端口只有17个</p>
+</li>
+<li class="lvl-2">
+<p>可配置为通用I/O端口，或外部设备I/O</p>
+</li>
+<li class="lvl-2">
+<p>输入端口具备上拉或下拉能力</p>
+</li>
+<li class="lvl-2">
+<p>每个I/O端口都可以配置成外围中断源的输入引脚</p>
+</li>
+<li class="lvl-2">
+<p>P1_0和P1_1都没有上拉/下拉能力</p>
+</li>
+<li class="lvl-2">
+<p>P1_0和P1_1具备20mA搞驱动输出，其余I/O引脚是4mA的驱动能力</p>
+</li>
+</ul>
+<p>在程序编写中，引入头文件<code>#include &lt;iocc2530.h&gt;</code></p>
+<p>与通用I/O端口相关的常用寄存器有下面4个：</p>
+<ol>
+<li class="lvl-3">
+<p>PxSEL: <strong><u>端口功能选择</u></strong>，设置端口是通用I/O还是外设功能端口。置为0，端口设置为通用I/O模式；置为1，端口设置为外设功能</p>
+</li>
+<li class="lvl-3">
+<p>PxDIR: <u><strong>端口方向选择</strong></u>，作为通用I/O时，用来<em><strong>设置数据的传输方向</strong></em>。置为0，输入；置为1，输出</p>
+</li>
+<li class="lvl-3">
+<p>PxINP: 作为通用输入端口时，<u><strong>选择输入模式</strong></u>是<u><em>上拉</em></u>、<u><em>下拉</em></u>还是<u><em>三态</em></u>(高电平、低电平、高阻态)。置为0，上拉/下拉；置为1，三态</p>
+<ol>
+<li class="lvl-8">P0INP，对上拉/下拉控制，需要结合P2INP实现</li>
+<li class="lvl-8"><img src="/img/P2INP.jpg" srcset="/img/loading.gif" lazyload alt=""></li>
+</ol>
+</li>
+<li class="lvl-3">
+<p>Px: 数据端口，用来<strong>控制端口的输入</strong>或<strong>获取端口的输入</strong></p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">P0SEL&amp;=~<span class="hljs-number">0x06</span>;<br>P0DIR|=<span class="hljs-number">0x06</span>;<br>P0INP&amp;=~<span class="hljs-number">0x06</span>;<br>P2INP&amp;=~<span class="hljs-number">0x20</span>;<br></code></pre></td></tr></table></figure>
+<h2 id="%E6%8C%89%E9%94%AE%E6%89%AB%E6%8F%8F" tabindex="-1" id="按键扫描">按键扫描</h2>
+<dl>
+<dt>基本原理：</dt>
+<dd>
+<p>按键的两个引脚，一端<strong>通过电阻上拉到高电平</strong>，一端<strong>接地</strong></p>
+</dd>
+<dd>
+<p><strong>没有按键按下</strong>时，输入引脚为<u>高电平</u>；同理，<strong>按下时</strong>，则为<u>低电平</u></p>
+</dd>
+<dd>
+<p>扫描原理：通过<u>反复读取按键输入引脚的信号</u>，然后<strong>识别高低电平</strong>来判断<strong>是否有按键触发</strong></p>
+</dd>
+</dl>
+<h3 id="%E6%8C%89%E9%94%AE%E5%8E%BB%E6%8A%96%E5%8A%A8" tabindex="-1" id="按键去抖动">按键去抖动</h3>
+<blockquote>
+<p>通过这个操作可以规避一些干扰信号，从而获取真实的按键触发信号</p>
+</blockquote>
+<p>去抖动原理：</p>
+<blockquote>
+<p>由于抖动产生的低电平往往都很短，所以可以分两次检测，如果第一次是低电平，延迟一会，进一步判断，如果还是低电平，则为真实信号，否则为干扰</p>
+</blockquote>
+<p>代码实例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c">uint <span class="hljs-title function_">Key_Check</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>    <span class="hljs-comment">//按下K1为低电平，置为0；未按下K1为高电平，置为1</span><br>    <span class="hljs-keyword">if</span>(K1 == <span class="hljs-number">0</span>)&#123;<br>        Delay(<span class="hljs-number">5000</span>);<br>        <span class="hljs-keyword">if</span>(K1 == <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span>(<span class="hljs-number">0</span>);<br>        &#125;<br> &#125;<br>    <span class="hljs-keyword">return</span>(<span class="hljs-number">1</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="cc2530%E7%9A%84%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F" tabindex="-1" id="CC2530的中断系统">CC2530的中断系统</h2>
+<dl>
+<dt>CC2530的P0、P1、P2端口中的每个引脚都具有<strong>外部中断输入功能</strong>，要使某些引脚具有外部中断功能，需要对<strong>IENx寄存器、PxIEN寄存器和PICTL寄存器</strong>进行适当的设置</dt>
+<dd>
+<p>PxIEN寄存器<strong>外部中断功能</strong></p>
+</dd>
+<dd>
+<p>PICTL寄存器<strong>端口输入信号控制</strong></p>
+</dd>
+</dl>
+<p>P0、P1和P2端口分别使用<strong>P0IF、P1IF和P2IF</strong>作为<strong>中断标志位</strong>，端口组上的任何一个引脚产生<strong>外部中断</strong>时，都会将<strong>对应端口组的中断标志为自动置位</strong></p>
+<p><strong>端口状态标志</strong>寄存器<strong>P0IFG、P1IFG和P2IFG</strong>，分别对应3个端口中隔音教的中断触发状态，当某引脚产生了<strong>设定的外部中断触发信号</strong>时，该寄存器<strong>对应的标志位会自动置位</strong></p>
+<blockquote>
+<p>外部中断标志PxIF和PxIFG必须在中断服务函数中<strong>手工清除</strong>，否则CPU会反复进入中断</p>
+<p>先清除PxIFG，再清除PxIF</p>
+</blockquote>
+<dl>
+<dt>外部中断相关的寄存器：</dt>
+<dd>
+<blockquote>
+<p>寄存器置0中断禁止，置1中断使能</p>
+</blockquote>
+</dd>
+<dd>
+<p>IEN1的第5位：P0IE(端口0中断使能)</p>
+</dd>
+<dd>
+<p>IEN2的第4位：P1IE(端口1中断使能),IEN2的第1位：P2IE(端口2中断使能)</p>
+</dd>
+<dd>
+<p>Px(P0&amp;P1&amp;P2)IEN寄存器和PICTL寄存器(置0上升沿触发，置1下降沿触发)</p>
+</dd>
+</dl>
+<p>例：将P1_2和P1_4设置为外部中断引脚，P1_2下降沿触发，P1_4上升沿触发，使能相关中断控制位</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">Init_INTP1</span><span class="hljs-params">()</span>&#123;<br>    P1SEL &amp;= ~<span class="hljs-number">0x14</span>; <span class="hljs-comment">//P1_2和P1_4设置为通用I/O端口，</span><br>    P1DIR &amp;= ~<span class="hljs-number">0x14</span>; <span class="hljs-comment">//P1_2和P1_4设置为输入模式</span><br>    <span class="hljs-comment">//CC2530芯片复位后，I/O引脚被配置成带上拉的输入模式，故上述两行代码可省略。</span><br>    PICTL |= <span class="hljs-number">0x02</span>; <span class="hljs-comment">//P1_2的外部中断信号设置为下降沿触发</span><br>    PICTL &amp;= ~<span class="hljs-number">0x04</span>; <span class="hljs-comment">//P1_4的外部中断信号设置为上升沿触发</span><br>    P1IEN |= <span class="hljs-number">0x14</span>; <span class="hljs-comment">//P1_2和P1_4使能位外部中断引脚</span><br>    IEN2 |= <span class="hljs-number">0x10</span>; <span class="hljs-comment">//使能P1端口外部中断</span><br>    EA = <span class="hljs-number">1</span>;   <span class="hljs-comment">//打开总中断</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//SW2(P0_1)初始化</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Init_INTP0</span><span class="hljs-params">()</span>&#123;<br>    P0SEL &amp;= ~<span class="hljs-number">0x02</span>; <span class="hljs-comment">//设置为I/O</span><br><br>    P0DIR &amp;= ~<span class="hljs-number">0x02</span>; <span class="hljs-comment">//设置为输入</span><br><br>    P0INP &amp;= ~<span class="hljs-number">0x02</span>; <span class="hljs-comment">//设置为上拉/下拉</span><br><br>    P2INP &amp;= ~<span class="hljs-number">0x20</span>; <span class="hljs-comment">//设置为上拉</span><br><br>    IEN1 |= <span class="hljs-number">0x20</span>; <span class="hljs-comment">//设置P0端口的中断使能</span><br><br>    P0IEN |= <span class="hljs-number">0x02</span>; <span class="hljs-comment">//设置P0_1这个引脚为中断使能</span><br><br>    PICTL |= <span class="hljs-number">0x01</span>; <span class="hljs-comment">//设置P0端口为下降沿触发</span><br><br>    EA = <span class="hljs-number">1</span>;   <span class="hljs-comment">//打开总中断</span><br>&#125;<br><br><span class="hljs-comment">//4个LED灯初始化</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Init_Port</span><span class="hljs-params">()</span>&#123;<br>    P1SEL &amp;= ~<span class="hljs-number">0x1B</span>; <span class="hljs-comment">//把P1_4、P1_3、P1_1、P1_0四个端口设置为I/O模式</span><br><br> P1DIR |= <span class="hljs-number">0x1B</span>; <span class="hljs-comment">//把4个端口设置为输出</span><br><br> P1 &amp;= ~<span class="hljs-number">0x1B</span>; <span class="hljs-comment">//4个LED灯设置为0(灭)</span><br>&#125;<br><br><span class="hljs-comment">//中断服务函数</span><br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> vector = P0INT_VECTOR <span class="hljs-comment">//向量可以在ioCC2530.h头文件中&quot;Interrupt Vectors&quot;找</span></span><br>__interrupt <span class="hljs-type">void</span> <span class="hljs-title function_">Service_INIP0</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-comment">//P0IFG</span><br>    <span class="hljs-keyword">if</span>((P0IFG &amp; <span class="hljs-number">0x02</span>) == <span class="hljs-number">0x02</span>)<br>        D5 = ~D5;<br>    <br>    P0IFG = <span class="hljs-number">0</span>; <span class="hljs-comment">//手动置0；先IFG，后IF</span><br>    P0IF = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//延时函数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Delay</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> t)</span>&#123;<br>    <span class="hljs-keyword">while</span>(t--);<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    Init_Port();<br>    Init_INTP0();<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>        D4 = <span class="hljs-number">1</span>;<br>        Delay(<span class="hljs-number">60000</span>);<br>        Delay(<span class="hljs-number">60000</span>);<br>        D4 = <span class="hljs-number">0</span>;<br>        Delay(<span class="hljs-number">60000</span>);<br>        Delay(<span class="hljs-number">60000</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>端口组中断使能 -&gt; 端口组具体引脚中断使能 -&gt; 上升(0)、下降(1)沿触发 -&gt; 总中断使能</p>
+</blockquote>
+<p>…</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" class="print-no-link">#单片机</a>
+      
+        <a href="/tags/CC2530/" class="print-no-link">#CC2530</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CC2530学习笔记</div>
+      <div>https://wcisns.top/2025/01/06/cc2530学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>wcis</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/06/markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Markdown语法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/05/Wsl2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="WSL2安装配置">
+                        <span class="hidden-mobile">WSL2安装配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"wcisns/Blog","repo-id":"R_kgDONnzoBA","category":"Announcements","category-id":"DIC_kwDONnzoBM4Cl8z7","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"bottom","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div>
+  <span id="timeDate">正在载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("1/12/2025 01:15:00");
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀已持续航行&nbsp"+dnum+"&nbsp天";  
+      document.getElementById("times").innerHTML = hnum + "&nbsp时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+  }
+  setInterval("createtime()",250);
+  </script>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="footer-content" style="font-size: 0.85rem;">
+       <div class="statistics"> <a target="_blank" rel="noopener" href="https://developer.hitokoto.cn/" id="hitokoto_text"><span style="color: #DDD;"  id="hitokoto"></span></a> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> </div>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://fastly.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://fastly.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://fastly.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://fastly.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+<script src="/js/backgroundize.js"></script>
+<script src="/js/title.js"></script>
+<script src="/js/loader-search.js"></script>
+<script src="/js/outdate-notice.js"></script>
+<script src="/js/loader.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  <canvas
+    class="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script type="text/javascript" src="/custom/fireworks/anime.min.js"></script> 
+<script type="text/javascript" src="/custom/fireworks/fireworks.js"></script>
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --></body>
+</html>

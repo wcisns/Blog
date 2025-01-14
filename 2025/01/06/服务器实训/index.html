@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="wcis">
+  <meta name="keywords" content="个人博客,blog">
+  
+    <meta name="description" content="Linux 服务与配置用到的操作步骤 Mysql 操作基于 Ubuntu 20.04, 其他操作基于 CentOS 7  实验配置 启用 Firewalld 服务 systemctl start firewalld 关闭 SElinux getenforce查看是否为 Disable 配置软件源 配置 Centos 7 本地源： 123456789101112131415161718192021">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器实训">
+<meta property="og:url" content="https://wcisns.top/2025/01/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%AE%AD/index.html">
+<meta property="og:site_name" content="wcisnsの小破站">
+<meta property="og:description" content="Linux 服务与配置用到的操作步骤 Mysql 操作基于 Ubuntu 20.04, 其他操作基于 CentOS 7  实验配置 启用 Firewalld 服务 systemctl start firewalld 关闭 SElinux getenforce查看是否为 Disable 配置软件源 配置 Centos 7 本地源： 123456789101112131415161718192021">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-06T15:26:25.000Z">
+<meta property="article:modified_time" content="2025-01-06T15:26:25.000Z">
+<meta property="article:author" content="wcis">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>服务器实训 - wcisnsの小破站</title>
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/gradient.css">
+<link rel="stylesheet" href="/css/media.css">
+<link rel="stylesheet" href="/css/backgroundize.css">
+<link rel="stylesheet" href="/css/selection.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/glassBg.css">
+<link rel="stylesheet" href="/css/part-text.css">
+<link rel="stylesheet" href="/css/toc.css">
+<link rel="stylesheet" href="/css/links.css">
+<link rel="stylesheet" href="/css/table.css">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/loader.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wcisns.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-12T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <div id="loader-container"> 
+    <div id="loader" class="loader"></div>
+    <div class="loader-inner">
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+</div>
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WCISNSの小破站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="服务器实训"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-06 23:26" pubdate>
+          2025年1月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">服务器实训</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>Linux 服务与配置用到的操作步骤<br>
+Mysql 操作基于 Ubuntu 20.04, 其他操作基于 CentOS 7</p>
+</blockquote>
+<h2 id="%E5%AE%9E%E9%AA%8C%E9%85%8D%E7%BD%AE" tabindex="-1" id="实验配置">实验配置</h2>
+<h3 id="%E5%90%AF%E7%94%A8-firewalld-%E6%9C%8D%E5%8A%A1" tabindex="-1" id="启用-Firewalld-服务">启用 Firewalld 服务</h3>
+<p><code>systemctl start firewalld</code></p>
+<h3 id="%E5%85%B3%E9%97%AD-selinux" tabindex="-1" id="关闭-SElinux">关闭 SElinux</h3>
+<p><code>getenforce</code>查看是否为 Disable</p>
+<h3 id="%E9%85%8D%E7%BD%AE%E8%BD%AF%E4%BB%B6%E6%BA%90" tabindex="-1" id="配置软件源">配置软件源</h3>
+<p>配置 Centos 7 本地源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#! /bin/bash</span><br><br>path=<span class="hljs-string">&quot;/etc/yum.repos.d&quot;</span><br><span class="hljs-keyword">if</span> [ ! -e <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br> <span class="hljs-built_in">mkdir</span> <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span><br><span class="hljs-keyword">else</span><br> <span class="hljs-built_in">rm</span> -rf <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span><br> <span class="hljs-built_in">mkdir</span> <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span><br><span class="hljs-keyword">fi</span><br><br>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo<br>yum remove epel-release -y &amp;&amp; yum install epel-release -y; <br>yum clean all &amp;&amp; yum makecache;<br><br>iso=<span class="hljs-string">&quot;/mnt/iso&quot;</span><br><span class="hljs-keyword">if</span> [ ! -e <span class="hljs-string">&quot;<span class="hljs-variable">$iso</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br> <span class="hljs-built_in">mkdir</span> <span class="hljs-variable">$iso</span><br><span class="hljs-keyword">fi</span> <br>mount /dev/cdrom /mnt/iso;<br>dvd=<span class="hljs-string">&quot;/etc/yum.repos.d/dvd.repo&quot;</span><br><span class="hljs-keyword">if</span> [ -e <span class="hljs-string">&quot;<span class="hljs-variable">$dvd</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br> <span class="hljs-built_in">rm</span> <span class="hljs-variable">$dvd</span><br><span class="hljs-keyword">else</span><br> <span class="hljs-built_in">touch</span> <span class="hljs-variable">$dvd</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF &gt;&gt; &quot;$dvd&quot;;</span><br><span class="hljs-string">[dvd]</span><br><span class="hljs-string">name=dvd</span><br><span class="hljs-string">baseurl=file:///mnt/cd0</span><br><span class="hljs-string">gpgcheck=0</span><br><span class="hljs-string">enabled=1</span><br><span class="hljs-string">priority=1</span><br><span class="hljs-string">EOF</span><br><br>yum -y install yum-priorities; <br>path=<span class="hljs-string">&quot;/etc/yum.repos.d/CentOS-Base.repo&quot;</span><br><span class="hljs-keyword">if</span> grep -q <span class="hljs-string">&quot;priority=2&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span>; <span class="hljs-keyword">then</span><br> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;已包含&quot;</span><br><span class="hljs-keyword">else</span><br> sed -i <span class="hljs-string">&#x27;/7/a\priority=2&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span>;<br><span class="hljs-keyword">fi</span>  <br>path=<span class="hljs-string">&quot;/etc/yum.repos.d/epel.repo&quot;</span><br><span class="hljs-keyword">if</span> grep -q <span class="hljs-string">&quot;priority=11&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span>; <span class="hljs-keyword">then</span><br> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;已包含&quot;</span><br><span class="hljs-keyword">else</span><br> sed -i <span class="hljs-string">&#x27;11i\priority=11&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span>;<br><span class="hljs-keyword">fi</span>  <br>yum clean all &amp;&amp; yum makecache;<br>yum install httpd -y;<br>yum repolist;<br></code></pre></td></tr></table></figure>
+<p>软件源地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">清华大学软件源: https://mirrors.tuna.tsinghua.edu.cn/help<br>中科大软件源: https://mirrors.ustc.edu.cn/help<br>华为云软件源: https://mirrors.huaweicloud.com/home<br>阿里云软件源: https://developer.aliyun.com/mirror/<br>上海交大软件源: https://mirrors.sjtug.sjtu.edu.cn/docs/ubuntu<br></code></pre></td></tr></table></figure>
+<p>我使用的是中科大软件源:</p>
+<p>CentOS 7:</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用 Vim(没有就用 Vi) 打开<code>/etc/yum.repos.d/CentOS-Base.repo</code></p>
+</li>
+<li class="lvl-2">
+<p>把下面的软件源输入进去</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash">[base]<br>name=CentOS-<span class="hljs-variable">$releasever</span> - Base<br><span class="hljs-comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra</span><br>baseurl=https://mirrors.ustc.edu.cn/centos/<span class="hljs-variable">$releasever</span>/os/<span class="hljs-variable">$basearch</span>/<br>gpgcheck=1<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7<br><span class="hljs-comment">#released updates</span><br>[updates]<br>name=CentOS-<span class="hljs-variable">$releasever</span> - Updates<br><span class="hljs-comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates&amp;infra=$infra</span><br>baseurl=https://mirrors.ustc.edu.cn/centos/<span class="hljs-variable">$releasever</span>/updates/<span class="hljs-variable">$basearch</span>/<br>gpgcheck=1<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7<br><span class="hljs-comment">#additional packages that may be useful</span><br>[extras]<br>name=CentOS-<span class="hljs-variable">$releasever</span> - Extras<br><span class="hljs-comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra</span><br>baseurl=https://mirrors.ustc.edu.cn/centos/<span class="hljs-variable">$releasever</span>/extras/<span class="hljs-variable">$basearch</span>/<br>gpgcheck=1<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7<br><span class="hljs-comment">#additional packages that extend functionality of existing packages</span><br>[centosplus]<br>name=CentOS-<span class="hljs-variable">$releasever</span> - Plus<br><span class="hljs-comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra</span><br>baseurl=https://mirrors.ustc.edu.cn/centos/<span class="hljs-variable">$releasever</span>/centosplus/<span class="hljs-variable">$basearch</span>/<br>gpgcheck=1<br>enabled=0<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7<br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用<code>sudo yum update</code>更新</p>
+</li>
+</ul>
+<p>Ubuntu 20.04:</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用 vi 打开<code>/etc/apt/sources.list</code></p>
+</li>
+<li class="lvl-2">
+<p>输入软件源：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 默认注释了源码仓库，如有需要可自行取消注释</span><br>deb https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse<br>deb https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse<br>deb https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse<br>deb https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse<br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用<code>sudo apt update</code>更新</p>
+</li>
+</ul>
+<h2 id="%E4%BD%BF%E7%94%A8-rdp-%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5-linux-%E6%9C%8D%E5%8A%A1%E5%99%A8" tabindex="-1" id="使用-RDP-方式连接-Linux-服务器">使用 RDP 方式连接 Linux 服务器</h2>
+<blockquote>
+<p>开通防火墙的 3389 端口，即可</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">firewall-cmd --permanent --add-port=3389/tcp<br>firewall-cmd --reload <span class="hljs-comment"># 使上面的配置生效</span><br></code></pre></td></tr></table></figure>
+<h2 id="%E5%88%B6%E4%BD%9C-dhcp-%E6%9C%8D%E5%8A%A1%E5%99%A8" tabindex="-1" id="制作-DHCP-服务器">制作 DHCP 服务器</h2>
+<blockquote>
+<p>本实验需要用到云计算机 A、B 和 C, 其中 A、B 装有 centos 7, C 装有 windows xp<br>
+使用 A、B 的 ens33 网卡，C 使用本地连接 2</p>
+</blockquote>
+<h3 id="dhcp-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE" tabindex="-1" id="DHCP-服务安装和配置">DHCP 服务安装和配置</h3>
+<blockquote>
+<p>在云计算机 A 中操作</p>
+</blockquote>
+<h4 id="%E5%AE%89%E8%A3%85" tabindex="-1" id="安装">安装</h4>
+<p>使用<code>sudo yum install dhcp -y</code>安装，使用<code>dhcpd</code>检查是否成功安装 dhcp</p>
+<h4 id="%E9%85%8D%E7%BD%AE" tabindex="-1" id="配置">配置</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span>&lt;&lt;<span class="hljs-string">EOF &gt; /etc/dhcp/dhcpd.conf</span><br><span class="hljs-string">ddns-update-style none;   #配置DHCP-DNS为不自动更新模式</span><br><span class="hljs-string">log-facility local7;         #local7以上级别的日志发送到dhcp日志</span><br><span class="hljs-string">default-lease-time 600;             #默认租约时间长度</span><br><span class="hljs-string">max-lease-time 3600;              #最大租约时间长度</span><br><span class="hljs-string">subnet 192.168.24.0 netmask 255.255.255.0 &#123;     #子网号和掩码</span><br><span class="hljs-string">range 192.168.24.50 192.168.24.100;           #IP地址分配范围</span><br><span class="hljs-string">option domain-name-servers 192.168.24.1;      #域名服务器地址</span><br><span class="hljs-string">option domain-name &quot;JQE.com&quot;;              #域名</span><br><span class="hljs-string">option routers 192.168.24.1;                   #网关地址</span><br><span class="hljs-string">option broadcast-address 192.168.24.254;       #广播地址</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<h4 id="%E4%BF%AE%E6%94%B9-ip" tabindex="-1" id="修改-IP">修改 IP</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在 A 中使用<strong>nmtui</strong>命令工具修改 ens33 网卡 IP 为<strong>192.168.24.1</strong>, 然后重新激活网卡</p>
+</li>
+<li class="lvl-2">
+<p>在 B 中使用<strong>nmtui</strong>命令修改 ens33 网卡 IP 为自动分配</p>
+</li>
+<li class="lvl-2">
+<p>在 C 中找到网络连接把本地连接 2 改成自动分配 IP</p>
+</li>
+</ul>
+<h2 id="%E5%88%B6%E4%BD%9C-ssh-%E6%9C%8D%E5%8A%A1%E5%99%A8" tabindex="-1" id="制作-SSH-服务器">制作 SSH 服务器</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>创建 Docker 虚拟机：<code>docker run -itd  --name nczy --hostname chpw --privileged=true  centos:7  /usr/sbin/init</code></p>
+</li>
+<li class="lvl-2">
+<p>进入：<code>docker exec -it nczy bash</code></p>
+</li>
+<li class="lvl-2">
+<p>进入虚拟机可能会没网，所以在进入之前先：<code>systemctl restart docker</code></p>
+</li>
+<li class="lvl-2">
+<p>如果还是没网，就照下面的输：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在宿主机</span><br><span class="hljs-built_in">cat</span>&lt;&lt;<span class="hljs-string">EOF &gt; /etc/sysctl.conf</span><br><span class="hljs-string"> net.ipv4.ip_forward = 1</span><br><span class="hljs-string">EOF</span><br>sysctl -p<br>systemctl restart docker<br>docker <span class="hljs-built_in">exec</span> -it nczy bash <span class="hljs-comment"># 启动nczy</span><br></code></pre></td></tr></table></figure>
+<p>虚拟机里输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install openssh-server<br>systemctl restart sshd --now<br><span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
+<p>在宿主机里输入：<code>firewall-cmd --zone=public --add-forward-port=port=2222:proto=tcp:toaddr=172.17.0.2:toport=22</code><br>
+在终端输入：<br>
+<code>ssh root@宿主机IP地址 -p 2222</code></p>
+<h2 id="%E5%9C%A8-nczy-%E5%AE%89%E8%A3%85-rdp-%E6%9C%8D%E5%8A%A1%EF%BC%8C%E4%BB%8E%E6%A0%A1%E5%9B%AD%E7%BD%91%E8%AE%BF%E9%97%AE" tabindex="-1" id="在-nczy-安装-RDP-服务，从校园网访问">在 nczy 安装 RDP 服务，从校园网访问</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在虚拟机中输入：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y epel-release   <span class="hljs-comment">#添加第三方安装源epel-release</span><br>yum install -y xrdp<br>yum groupinstall -y Xfce    <span class="hljs-comment"># 基于上面epel-release，得先安装它</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;xfce4-session&quot;</span> &gt; ~/.Xclients<br><span class="hljs-built_in">chmod</span> +x ~/.Xclients<br>sed -i <span class="hljs-string">&#x27;s/ssl_protocols=.*/ssl_protocols=TLSv1/&#x27;</span> /etc/xrdp/xrdp.ini <br>systemctl start xrdp --now <br>systemctl <span class="hljs-built_in">enable</span> xrdp --now <br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在宿主机中输入：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">firewall-cmd --permanent --add-port=3390/tcp<br>firewall-cmd --reload<br>firewall-cmd --zone=public --add-forward-port=port=3390:proto=tcp:toaddr=172.17.0.2:toport=3389<br></code></pre></td></tr></table></figure>
+<h2 id="dns" tabindex="-1" id="DNS">DNS</h2>
+<h3 id="%E6%B7%BB%E5%8A%A0-docker-%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F" tabindex="-1" id="添加-Docker-国内镜像">添加 Docker 国内镜像</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span>&lt;&lt;<span class="hljs-string">EOF &gt; /etc/docker/daemon.json</span><br><span class="hljs-string">&#123;</span><br><span class="hljs-string"> &quot;registry-mirrors&quot;: [</span><br><span class="hljs-string">    &quot;https://9cpn8tt6.mirror.aliyuncs.com&quot;,</span><br><span class="hljs-string">    &quot;https://dockerproxy.com&quot;,</span><br><span class="hljs-string">    &quot;https://hub-mirror.c.163.com&quot;,</span><br><span class="hljs-string">    &quot;https://mirror.baidubce.com&quot;,</span><br><span class="hljs-string">    &quot;https://ccr.ccs.tencentyun.com&quot;</span><br><span class="hljs-string">  ]</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E6%8B%89%E5%8F%96-bind-%E6%9C%8D%E5%8A%A1%E5%99%A8" tabindex="-1" id="拉取-Bind-服务器">拉取 Bind 服务器</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl start docker<br><br>docker pull sameersbn/bind<br><br><span class="hljs-built_in">mkdir</span> -p /opt/docker/bind<br><br>lsof -i :53 <span class="hljs-comment"># 查看哪些服务监听着53端口</span><br>systemctl stop dnsmasq <span class="hljs-comment"># 暂停dnsmasq服务</span><br><span class="hljs-built_in">kill</span> -9 PID <span class="hljs-comment"># PID在上一条命令显示出了</span><br><br>docker run --name <span class="hljs-built_in">bind</span> -d \<br>--restart=always \<br>-p 53:53/tcp \<br>-p 53:53/udp \<br>-p 10000:10000/tcp \<br>--volume /opt/docker/bind:/data \<br>sameersbn/bind<br><br>docker restart <span class="hljs-built_in">bind</span><br></code></pre></td></tr></table></figure>
+<h2 id="%E5%AE%89%E8%A3%85-mysql" tabindex="-1" id="安装-Mysql">安装 Mysql</h2>
+<blockquote>
+<p>基于 Ubuntu 20.04</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>安装 Mysql 服务<br>
+<code>sudo apt install mysql-server</code></p>
+</li>
+<li class="lvl-2">
+<p>启动服务<br>
+<code>sudo service mysql start</code></p>
+</li>
+<li class="lvl-2">
+<p>启动服务<br>
+<code>mysql -u root -p</code></p>
+</li>
+<li class="lvl-2">
+<p>修改密码和授予远程访问权限</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">CREATE USER <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;123456&#x27;</span>; <span class="hljs-comment"># 创建一个用户为root并且密码设置为123456</span><br>GRANT ALL PRIVILEGES ON *.* TO <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> WITH GRANT OPTION; <span class="hljs-comment"># 授予root用户远程访问权限</span><br>FLUSH PRIVILEGES; <span class="hljs-comment"># 刷新配置</span><br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>修改配置文件在<code>/etc/mysql/mysql.cnf</code>文件中输入下面两行</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[mysqld]<br>bind-address = 0.0.0.0<br></code></pre></td></tr></table></figure>
+<p>把<code>/etc/mysql/mysql.conf.d/mysqld.conf</code>中下面两行注释掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bind-address = 127.0.0.1<br>mysqlx-bind-address = 127.0.0.1<br></code></pre></td></tr></table></figure>
+<p><code>service mysql restart</code></p>
+<h2 id="%E4%BD%BF%E7%94%A8-python-%E7%A8%8B%E5%BA%8F%E5%90%91-linux-%E7%B3%BB%E7%BB%9F%E5%8F%91%E9%80%81%E5%91%BD%E4%BB%A4" tabindex="-1" id="使用-Python-程序向-Linux-系统发送命令">使用 Python 程序向 Linux 系统发送命令</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> subprocess<br><br>result = subprocess.run(<br>    [<span class="hljs-string">&#x27;ssh&#x27;</span>, <span class="hljs-string">&#x27;root@172.16.124.24&#x27;</span>, <span class="hljs-string">&#x27;ls -l /&#x27;</span>],<br>    capture_output=<span class="hljs-literal">True</span>,<br>    text=<span class="hljs-literal">True</span>,<br>    encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>  <span class="hljs-comment"># 使用 UTF-8 编码</span><br>)<br><span class="hljs-built_in">print</span>(result.stdout)<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>服务器实训</div>
+      <div>https://wcisns.top/2025/01/06/服务器实训/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>wcis</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/06/nushell/" title="NuShell">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">NuShell</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/06/vim/" title="Vim">
+                        <span class="hidden-mobile">Vim</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"wcisns/Blog","repo-id":"R_kgDONnzoBA","category":"Announcements","category-id":"DIC_kwDONnzoBM4Cl8z7","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"bottom","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div>
+  <span id="timeDate">正在载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("1/12/2025 01:15:00");
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀已持续航行&nbsp"+dnum+"&nbsp天";  
+      document.getElementById("times").innerHTML = hnum + "&nbsp时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+  }
+  setInterval("createtime()",250);
+  </script>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="footer-content" style="font-size: 0.85rem;">
+       <div class="statistics"> <a target="_blank" rel="noopener" href="https://developer.hitokoto.cn/" id="hitokoto_text"><span style="color: #DDD;"  id="hitokoto"></span></a> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> </div>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://fastly.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://fastly.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://fastly.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://fastly.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+<script src="/js/backgroundize.js"></script>
+<script src="/js/title.js"></script>
+<script src="/js/loader-search.js"></script>
+<script src="/js/outdate-notice.js"></script>
+<script src="/js/loader.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  <canvas
+    class="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script type="text/javascript" src="/custom/fireworks/anime.min.js"></script> 
+<script type="text/javascript" src="/custom/fireworks/fireworks.js"></script>
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --></body>
+</html>
