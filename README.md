@@ -4,4 +4,4 @@
 
 放一张主页图
 
-![cover](/img/note/SiteImage.png)
+![cover](/img/note/wcisnsSiteImage.png)
