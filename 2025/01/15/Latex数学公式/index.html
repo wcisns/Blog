@@ -19,27 +19,24 @@
   <meta name="author" content="wcis">
   <meta name="keywords" content="个人博客,blog">
   
-    <meta name="description" content="安装 WSL2  启用适用于 Linux 的 Windows 子系统  1dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Windows-Subsystem-Linux &#x2F;all &#x2F;norestart   启用虚拟化   1dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:VirtualMac">
+    <meta name="description" content="。。。    名称 代码 效果     乘法 \times ×\times×   除法 \div ÷\div÷   开平方 \sqrt[2]&#123;3&#125; 32\sqrt[2]{3}23​   分数 \frac&#123;a&#125;&#123;b&#125; 23\frac{2}{3}32​   包含于 \subset ⊂\subset⊂   包含 \supset ⊃\supset">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WSL2安装配置">
-<meta property="og:url" content="https://wcisns.top/2025/01/05/Wsl2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="Latex数学公式">
+<meta property="og:url" content="https://wcisns.top/2025/01/15/Latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="wcisnsの小破站">
-<meta property="og:description" content="安装 WSL2  启用适用于 Linux 的 Windows 子系统  1dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Windows-Subsystem-Linux &#x2F;all &#x2F;norestart   启用虚拟化   1dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:VirtualMac">
+<meta property="og:description" content="。。。    名称 代码 效果     乘法 \times ×\times×   除法 \div ÷\div÷   开平方 \sqrt[2]&#123;3&#125; 32\sqrt[2]{3}23​   分数 \frac&#123;a&#125;&#123;b&#125; 23\frac{2}{3}32​   包含于 \subset ⊂\subset⊂   包含 \supset ⊃\supset">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-05T15:42:53.000Z">
-<meta property="article:modified_time" content="2025-01-13T09:08:57.300Z">
+<meta property="article:published_time" content="2025-01-15T08:39:02.000Z">
+<meta property="article:modified_time" content="2025-01-15T09:01:39.167Z">
 <meta property="article:author" content="wcis">
-<meta property="article:tag" content="Arch">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Windows">
-<meta property="article:tag" content="WSL2">
+<meta property="article:tag" content="Latex数学公式">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>WSL2安装配置 - wcisnsの小破站</title>
+  <title>Latex数学公式 - wcisnsの小破站</title>
 
   <link  rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -255,7 +252,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="WSL2安装配置"></span>
+            <span id="subtitle" data-typed-text="Latex数学公式"></span>
           
         </div>
 
@@ -266,8 +263,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-05 23:42" pubdate>
-          2025年1月5日 晚上
+        <time datetime="2025-01-15 16:39" pubdate>
+          2025年1月15日 下午
         </time>
       </span>
     
@@ -278,7 +275,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          470 字
+          130 字
         
       </span>
     
@@ -289,7 +286,7 @@
         
         
         
-          4 分钟
+          2 分钟
         
       </span>
     
@@ -335,12 +332,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">WSL2安装配置</h1>
+            <h1 id="seo-header">Latex数学公式</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年1月13日 下午
+                    本文最后更新于 2025年1月15日 下午
                   
                 
               </p>
@@ -348,82 +345,144 @@
             
               <div class="markdown-body">
                 
-                <h2 id="%E5%AE%89%E8%A3%85-wsl2" tabindex="-1" id="安装-WSL2">安装 WSL2</h2>
-<ul class="lvl-0">
-<li class="lvl-2">启用适用于 Linux 的 Windows 子系统</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart<br></code></pre></td></tr></table></figure>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>启用虚拟化</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart<br></code></pre></td></tr></table></figure>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>启动 Hyper-V</p>
-</li>
-</ul>
-<p>Windows+R 键，调出运行，键入 control，进入控制面板，进入程序，打开启动或关闭 Windows 功能，勾选 Hyper-V，重启</p>
-<p><a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" title="把链接拷贝到浏览器上">下载并安装 X64 的 WSL2 linux 内核升级包</a></p>
-<p>设置 WSL 默认版本</p>
-<p><code>wsl --set-default-version 2</code></p>
-<h2 id="%E5%AE%89%E8%A3%85-linux" tabindex="-1" id="安装-Linux">安装 Linux</h2>
-<p>打开 Store 商店，输入 Arch，下载</p>
-<p>下载完了，打开，输入用户名，密码</p>
-<h2 id="%E9%85%8D%E7%BD%AE-arch" tabindex="-1" id="配置-Arch">配置 Arch</h2>
-<h3 id="%E6%8D%A2%E6%BA%90" tabindex="-1" id="换源">换源</h3>
-<p>切换 Arch linux、Arch linux CN 源</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/help/">中科大软件源</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Syyuu<br><span class="hljs-built_in">sudo</span> pacman-key --lsign-key <span class="hljs-string">&quot;farseerfc@archlinux.org&quot;</span><br><span class="hljs-built_in">sudo</span> pacman -S archlinuxcn-keyring<br><span class="hljs-built_in">sudo</span> pacman -S yay<br><span class="hljs-built_in">sudo</span> passwd root <span class="hljs-comment"># 修改root密码</span><br></code></pre></td></tr></table></figure>
-<p>下载 nvim、zsh &amp; ohmyzsh、yay</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/shells <span class="hljs-comment"># 查看zsh是否安装</span><br><span class="hljs-built_in">sudo</span> pacman -S zsh<br>git <span class="hljs-built_in">clone</span> --depth=1 git@github.com:ryanoasis/nerd-fonts.git<br><span class="hljs-built_in">cd</span> nerd-fonts<br>./install.sh<br></code></pre></td></tr></table></figure>
-<h3 id="zsh-%26-ohmyzsh" tabindex="-1" id="zsh-ohmyzsh">zsh &amp; ohmyzsh</h3>
-<p>ohmyzsh 安装：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>把 oh-my-zsh 项目 Clone 下来：</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh<br></code></pre></td></tr></table></figure>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>复制 .zshrc</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc<br></code></pre></td></tr></table></figure>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>更改你的默认 Shell</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chsh -s /bin/zsh<br></code></pre></td></tr></table></figure>
-<p>zsh 插件：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>powerlevel10k(主题)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> --depth=1 https://gitee.com/romkatv/powerlevel10k.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-<span class="hljs-variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k<br></code></pre></td></tr></table></figure>
-<p>把.zshrc 打开，找到 ZSH_THEME，把值改为&quot;powerlevel10k/powerlevel10k&quot;</p>
-</li>
-<li class="lvl-2">
-<p>auto-suggestion(自动补全)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions<br></code></pre></td></tr></table></figure>
-<p>把.zshrc 打开，找到 plugins=(git)，在 git 后面添加 zsh-autosuggestions</p>
-</li>
-<li class="lvl-2">
-<p>syntax highlighting(语法高亮)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting<br></code></pre></td></tr></table></figure>
-<p>把<code>.zshrc</code> 打开，找到 <code>plugins=(git)</code>，在 <code>git</code> 后面添加 <code>zsh-syntax-highlighting</code></p>
-</li>
-</ul>
-<p>最后<code>source ~/.zshrc</code></p>
-<h3 id="nvim" tabindex="-1" id="nvim">nvim</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S neovim<br>git <span class="hljs-built_in">clone</span> git@github.com:ayamir/nvimdots.git<br><span class="hljs-built_in">cd</span> nvimdots/scripts<br>./install.sh<br><span class="hljs-comment"># 如果始终无法安装成功，则执行下条命令</span><br><span class="hljs-built_in">rm</span> -fr ~/.local/share/nvim/site/lazy<br></code></pre></td></tr></table></figure>
-<h3 id="nano-%E7%BC%96%E8%BE%91%E5%99%A8" tabindex="-1" id="nano-编辑器">nano 编辑器</h3>
-<p><code>Ctrl+O</code>:保存，按<strong>回车</strong>保存当前文件</p>
-<p><code>Ctrl+X</code>:退出</p>
-<h2 id="%E8%BF%81%E7%A7%BB-wsl2" tabindex="-1" id="迁移-WSL2">迁移 WSL2</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">wsl --shutdown <span class="hljs-comment">#关闭所有正在运行的实例</span><br>wsl -l -v <span class="hljs-comment">#查看STATE是否为Stopped</span><br>wsl --<span class="hljs-built_in">export</span> Ubuntu  D:\Ubuntu_WSL2\Ubuntu.tar <span class="hljs-comment">#导出Ubuntu到D盘的Ubuntu_WSL2目录并创建一个Ubuntu.tar的归档文件</span><br>wsl --unregister Ubuntu <span class="hljs-comment">#注销Ubuntu</span><br>wsl --import Ubuntu D:\Ubuntu_WSL2 D:\Ubuntu_WSL2\Ubuntu.tar <span class="hljs-comment">#把Ubuntu.tar重新注册为linux发行版</span><br>Ubuntu config --default-user chpw <span class="hljs-comment">#新建一个叫chpw用户</span><br></code></pre></td></tr></table></figure>
+                <p>。。。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>代码</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乘法</td>
+<td><code>\times</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span></td>
+</tr>
+<tr>
+<td>除法</td>
+<td><code>\div</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>÷</mo></mrow><annotation encoding="application/x-tex">\div</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">÷</span></span></span></span></td>
+</tr>
+<tr>
+<td>开平方</td>
+<td><code>\sqrt[2]&#123;3&#125;</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mroot><mn>3</mn><mn>2</mn></mroot></mrow><annotation encoding="application/x-tex">\sqrt[2]{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1328em;"></span><span class="mord sqrt"><span class="root"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7869em;"><span style="top:-2.9647em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size6 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">3</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>分数</td>
+<td><code>\frac&#123;a&#125;&#123;b&#125;</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>包含于</td>
+<td><code>\subset</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊂</mo></mrow><annotation encoding="application/x-tex">\subset</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">⊂</span></span></span></span></td>
+</tr>
+<tr>
+<td>包含</td>
+<td><code>\supset</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊃</mo></mrow><annotation encoding="application/x-tex">\supset</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">⊃</span></span></span></span></td>
+</tr>
+<tr>
+<td>属于</td>
+<td><code>\in</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo></mrow><annotation encoding="application/x-tex">\in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span></span></span></span></td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td><code>\geq</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\geq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span></span></span></span></td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td><code>\leq</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span></td>
+</tr>
+<tr>
+<td>不等于</td>
+<td><code>\neq</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span></td>
+</tr>
+<tr>
+<td>上标</td>
+<td><code>a^&#123;2&#125;</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">a^{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>下标</td>
+<td><code>b_&#123;2&#125;</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">b_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>加减</td>
+<td><code>\pm</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">±</span></span></span></span></td>
+</tr>
+<tr>
+<td>点乘</td>
+<td><code>\cdot</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋅</mo></mrow><annotation encoding="application/x-tex">\cdot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord">⋅</span></span></span></span></td>
+</tr>
+<tr>
+<td>右箭头</td>
+<td><code>\to</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></td>
+</tr>
+<tr>
+<td>左箭头</td>
+<td><code>\gets</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\gets</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">←</span></span></span></span></td>
+</tr>
+<tr>
+<td>左右箭头</td>
+<td><code>\iff</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></td>
+</tr>
+<tr>
+<td></td>
+<td><code>varsubsetneqq</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⫋</mo></mrow><annotation encoding="application/x-tex">\varsubsetneqq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0087em;vertical-align:-0.2514em;"></span><span class="mrel amsrm"></span></span></span></span></td>
+</tr>
+<tr>
+<td></td>
+<td><code>varsupsetneqq</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⫌</mo></mrow><annotation encoding="application/x-tex">\varsupsetneqq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0087em;vertical-align:-0.2514em;"></span><span class="mrel amsrm"></span></span></span></span></td>
+</tr>
+<tr>
+<td>小于不等于</td>
+<td><code>\nleqslant</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≰</mo></mrow><annotation encoding="application/x-tex">\nleqslant</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0966em;vertical-align:-0.3027em;"></span><span class="mrel amsrm"></span></span></span></span></td>
+</tr>
+<tr>
+<td>大于不等于</td>
+<td><code>\ngeqslant</code></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≱</mo></mrow><annotation encoding="application/x-tex">\ngeqslant</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0966em;vertical-align:-0.3027em;"></span><span class="mrel amsrm"></span></span></span></span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -457,13 +516,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Arch/" class="print-no-link">#Arch</a>
-      
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
-      
-        <a href="/tags/Windows/" class="print-no-link">#Windows</a>
-      
-        <a href="/tags/WSL2/" class="print-no-link">#WSL2</a>
+        <a href="/tags/Latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" class="print-no-link">#Latex数学公式</a>
       
     </div>
   
@@ -475,8 +528,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>WSL2安装配置</div>
-      <div>https://wcisns.top/2025/01/05/Wsl2安装配置/</div>
+      <div>Latex数学公式</div>
+      <div>https://wcisns.top/2025/01/15/Latex数学公式/</div>
     </div>
     <div class="license-meta">
       
@@ -488,7 +541,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月5日</div>
+          <div>2025年1月15日</div>
         </div>
       
       
@@ -520,18 +573,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/06/cc2530%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="CC2530学习笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CC2530学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/05/Linux%E4%B8%8AVSCode-tar-gz%E5%AE%89%E8%A3%85VSCode/" title="Linux上VSCode.tar.gz安装VSCode">
-                        <span class="hidden-mobile">Linux上VSCode.tar.gz安装VSCode</span>
+                      <a href="/2025/01/10/Github%E9%83%A8%E7%BD%B2Hexo%E6%B7%BB%E5%8A%A0README%E6%96%87%E4%BB%B6/" title="Github部署Hexo添加README文件">
+                        <span class="hidden-mobile">Github部署Hexo添加README文件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
