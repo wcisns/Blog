@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"wcisns.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-12T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"wcisns.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"42cc0ee656f30715229e0a868009fa47","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-12T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -92,6 +92,30 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?42cc0ee656f30715229e0a868009fa47";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
   
@@ -273,7 +297,7 @@
                 
 
 <div class="text-center tagcloud">
-  <a href="/tags/Arch/" style="font-size: 23px; color: #4981ca">Arch</a> <a href="/tags/CC2530/" style="font-size: 22px; color: #923daa">CC2530</a> <a href="/tags/Docker/" style="font-size: 22px; color: #923daa">Docker</a> <a href="/tags/EFI%E5%88%86%E5%8C%BA/" style="font-size: 22px; color: #923daa">EFI分区</a> <a href="/tags/Git/" style="font-size: 22px; color: #923daa">Git</a> <a href="/tags/Github/" style="font-size: 22px; color: #923daa">Github</a> <a href="/tags/Hexo/" style="font-size: 23px; color: #4981ca">Hexo</a> <a href="/tags/Hyprland/" style="font-size: 22px; color: #923daa">Hyprland</a> <a href="/tags/Latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" style="font-size: 22px; color: #923daa">Latex数学公式</a> <a href="/tags/Linux/" style="font-size: 24px; color: #00c4e9">Linux</a> <a href="/tags/Markdown/" style="font-size: 22px; color: #923daa">Markdown</a> <a href="/tags/NuShell/" style="font-size: 22px; color: #923daa">NuShell</a> <a href="/tags/Powershell7/" style="font-size: 22px; color: #923daa">Powershell7</a> <a href="/tags/README/" style="font-size: 22px; color: #923daa">README</a> <a href="/tags/U%E7%9B%98/" style="font-size: 22px; color: #923daa">U盘</a> <a href="/tags/Vim/" style="font-size: 22px; color: #923daa">Vim</a> <a href="/tags/WSL2/" style="font-size: 22px; color: #923daa">WSL2</a> <a href="/tags/Windows/" style="font-size: 23px; color: #4981ca">Windows</a> <a href="/tags/ssh/" style="font-size: 22px; color: #923daa">ssh</a> <a href="/tags/tar-gz/" style="font-size: 22px; color: #923daa">tar.gz</a> <a href="/tags/vscode/" style="font-size: 22px; color: #923daa">vscode</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 22px; color: #923daa">单片机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 22px; color: #923daa">计算机基础</a>
+  <a href="/tags/Arch/" style="font-size: 23px; color: #4981ca">Arch</a> <a href="/tags/CC2530/" style="font-size: 22px; color: #923daa">CC2530</a> <a href="/tags/Docker/" style="font-size: 22px; color: #923daa">Docker</a> <a href="/tags/EFI%E5%88%86%E5%8C%BA/" style="font-size: 22px; color: #923daa">EFI分区</a> <a href="/tags/Git/" style="font-size: 22px; color: #923daa">Git</a> <a href="/tags/Github/" style="font-size: 22px; color: #923daa">Github</a> <a href="/tags/Hexo/" style="font-size: 23px; color: #4981ca">Hexo</a> <a href="/tags/Hyprland/" style="font-size: 22px; color: #923daa">Hyprland</a> <a href="/tags/Latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" style="font-size: 22px; color: #923daa">Latex数学公式</a> <a href="/tags/Linux/" style="font-size: 24px; color: #00c4e9">Linux</a> <a href="/tags/Markdown/" style="font-size: 22px; color: #923daa">Markdown</a> <a href="/tags/NuShell/" style="font-size: 22px; color: #923daa">NuShell</a> <a href="/tags/Powershell7/" style="font-size: 22px; color: #923daa">Powershell7</a> <a href="/tags/README/" style="font-size: 22px; color: #923daa">README</a> <a href="/tags/U%E7%9B%98/" style="font-size: 22px; color: #923daa">U盘</a> <a href="/tags/Vim/" style="font-size: 22px; color: #923daa">Vim</a> <a href="/tags/WSL2/" style="font-size: 22px; color: #923daa">WSL2</a> <a href="/tags/Windows/" style="font-size: 23px; color: #4981ca">Windows</a> <a href="/tags/ssh/" style="font-size: 22px; color: #923daa">ssh</a> <a href="/tags/tar-gz/" style="font-size: 22px; color: #923daa">tar.gz</a> <a href="/tags/vscode/" style="font-size: 22px; color: #923daa">vscode</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 22px; color: #923daa">单片机</a>
 </div>
 
               </div>
