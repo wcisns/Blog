@@ -1,7 +1,7 @@
 /* 正文底页毛玻璃效果 */
 #board {
-  -webkit-backdrop-filter: blur(40px);
-  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 /* 侧边目录毛玻璃效果 */
 #toc {
@@ -11,6 +11,6 @@
   border-radius: 10px;
   /* -webkit-backdrop-filter: blur(var(--background-blur));
   backdrop-filter: blur(var(--background-blur)); */
-  -webkit-backdrop-filter: blur(40px);
-  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
