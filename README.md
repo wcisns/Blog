@@ -6,4 +6,6 @@
 
 放一张主页图
 
-![cover](/img/note/wcisnsSiteImage.png)
+![cover](/img/note/wcisnsSiteImage1.jpg)
+
+![cover](/img/note/wcisnsSiteImage2.jpg)
